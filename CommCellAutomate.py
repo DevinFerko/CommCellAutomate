@@ -2,17 +2,15 @@
 
 # Imports Libraries/Dependencies
 import openpyxl
+import pandas as pd
+from pathlib import Path
 
-# Path of excel sheet
-path = r"C:\Users\U360269\Desktop\Codes\CommCellAutomate\SPEN TOTAL MASTER1 (2).xlsx"
+# Path of excel sheet and open workbook
+path = Path(r"C:\Users\U360269\Desktop\Codes\CommCellAutomate\SPEN TOTAL MASTER1 (2).xlsx")
+sheet = ["TOTAL LIVE"]
 
-# Open workbook
-wb_obj = openpyxl.load_workbook(path, read_only=True)
+# Pandas read excel
+df = pd.read_excel(path, engine='openpyxl', sheet_name = sheet)
 
-# Gets active sheet
-sheet_obj = wb_obj['TOTAL LIVE']
-
-# Gets first cell
-cell_obj = sheet_obj.cell(row = 27, column = 8)
-
-print(cell_obj.value)
+# Print DF to debug
+# print(df)
